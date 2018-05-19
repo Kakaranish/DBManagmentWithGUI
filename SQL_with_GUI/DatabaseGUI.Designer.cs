@@ -41,14 +41,16 @@
             this.countryCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.district = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.population = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableNamesComboBox = new System.Windows.Forms.ComboBox();
+            this.tableNamesChoiceLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // headerLabel
             // 
             this.headerLabel.AutoSize = true;
-            this.headerLabel.Location = new System.Drawing.Point(45, 41);
+            this.headerLabel.Location = new System.Drawing.Point(40, 139);
             this.headerLabel.Name = "headerLabel";
-            this.headerLabel.Size = new System.Drawing.Size(341, 24);
+            this.headerLabel.Size = new System.Drawing.Size(292, 20);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Enter data you need to find in database:";
             // 
@@ -72,16 +74,18 @@
             // 
             // queryTextBox
             // 
-            this.queryTextBox.Location = new System.Drawing.Point(49, 78);
+            this.queryTextBox.Location = new System.Drawing.Point(44, 161);
+            this.queryTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.queryTextBox.Name = "queryTextBox";
-            this.queryTextBox.Size = new System.Drawing.Size(337, 28);
+            this.queryTextBox.Size = new System.Drawing.Size(304, 24);
             this.queryTextBox.TabIndex = 4;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(505, 78);
+            this.searchButton.Location = new System.Drawing.Point(454, 161);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(192, 28);
+            this.searchButton.Size = new System.Drawing.Size(188, 24);
             this.searchButton.TabIndex = 6;
             this.searchButton.Text = "Search in database";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -96,10 +100,11 @@
             this.district,
             this.population});
             this.resultsListView.FullRowSelect = true;
-            this.resultsListView.Location = new System.Drawing.Point(49, 149);
+            this.resultsListView.Location = new System.Drawing.Point(44, 216);
+            this.resultsListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultsListView.Name = "resultsListView";
             this.resultsListView.Scrollable = false;
-            this.resultsListView.Size = new System.Drawing.Size(648, 193);
+            this.resultsListView.Size = new System.Drawing.Size(598, 173);
             this.resultsListView.TabIndex = 8;
             this.resultsListView.UseCompatibleStateImageBehavior = false;
             this.resultsListView.View = System.Windows.Forms.View.Details;
@@ -128,17 +133,44 @@
             this.population.Text = "Population";
             this.population.Width = 168;
             // 
+            // tableNamesComboBox
+            // 
+            this.tableNamesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tableNamesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tableNamesComboBox.FormattingEnabled = true;
+            this.tableNamesComboBox.Items.AddRange(new object[] {
+            "as",
+            "as",
+            "d",
+            "das"});
+            this.tableNamesComboBox.Location = new System.Drawing.Point(44, 61);
+            this.tableNamesComboBox.Name = "tableNamesComboBox";
+            this.tableNamesComboBox.Size = new System.Drawing.Size(188, 26);
+            this.tableNamesComboBox.TabIndex = 9;
+            // 
+            // tableNamesChoiceLabel
+            // 
+            this.tableNamesChoiceLabel.AutoSize = true;
+            this.tableNamesChoiceLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tableNamesChoiceLabel.Location = new System.Drawing.Point(40, 38);
+            this.tableNamesChoiceLabel.Name = "tableNamesChoiceLabel";
+            this.tableNamesChoiceLabel.Size = new System.Drawing.Size(111, 20);
+            this.tableNamesChoiceLabel.TabIndex = 10;
+            this.tableNamesChoiceLabel.Text = "Choose table: ";
+            // 
             // DatabaseGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 373);
+            this.ClientSize = new System.Drawing.Size(717, 529);
+            this.Controls.Add(this.tableNamesChoiceLabel);
+            this.Controls.Add(this.tableNamesComboBox);
             this.Controls.Add(this.resultsListView);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.queryTextBox);
             this.Controls.Add(this.headerLabel);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.818182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DatabaseGUI";
             this.Text = "Database with GUI - Demo";
             this.ResumeLayout(false);
@@ -160,6 +192,8 @@
         private System.Windows.Forms.ColumnHeader countryCode;
         private System.Windows.Forms.ColumnHeader district;
         private System.Windows.Forms.ColumnHeader population;
+        private System.Windows.Forms.ComboBox tableNamesComboBox;
+        private System.Windows.Forms.Label tableNamesChoiceLabel;
     }
 }
 
