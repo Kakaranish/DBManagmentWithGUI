@@ -36,11 +36,6 @@
             this.queryTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.resultsListView = new System.Windows.Forms.ListView();
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.countryCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.district = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.population = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableNamesComboBox = new System.Windows.Forms.ComboBox();
             this.tableNamesChoiceLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -79,6 +74,7 @@
             this.queryTextBox.Name = "queryTextBox";
             this.queryTextBox.Size = new System.Drawing.Size(304, 24);
             this.queryTextBox.TabIndex = 4;
+            this.queryTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.queryTextBox_KeyDown);
             // 
             // searchButton
             // 
@@ -93,45 +89,16 @@
             // 
             // resultsListView
             // 
-            this.resultsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.id,
-            this.name,
-            this.countryCode,
-            this.district,
-            this.population});
+            this.resultsListView.Cursor = System.Windows.Forms.Cursors.Default;
             this.resultsListView.FullRowSelect = true;
+            this.resultsListView.GridLines = true;
             this.resultsListView.Location = new System.Drawing.Point(44, 216);
             this.resultsListView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resultsListView.Name = "resultsListView";
-            this.resultsListView.Scrollable = false;
             this.resultsListView.Size = new System.Drawing.Size(598, 173);
             this.resultsListView.TabIndex = 8;
             this.resultsListView.UseCompatibleStateImageBehavior = false;
             this.resultsListView.View = System.Windows.Forms.View.Details;
-            // 
-            // id
-            // 
-            this.id.Text = "ID";
-            // 
-            // name
-            // 
-            this.name.Text = "Name";
-            this.name.Width = 164;
-            // 
-            // countryCode
-            // 
-            this.countryCode.Text = "Country Code";
-            this.countryCode.Width = 134;
-            // 
-            // district
-            // 
-            this.district.Text = "District";
-            this.district.Width = 110;
-            // 
-            // population
-            // 
-            this.population.Text = "Population";
-            this.population.Width = 168;
             // 
             // tableNamesComboBox
             // 
@@ -187,11 +154,6 @@
         private System.Windows.Forms.TextBox queryTextBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ListView resultsListView;
-        private System.Windows.Forms.ColumnHeader id;
-        private System.Windows.Forms.ColumnHeader name;
-        private System.Windows.Forms.ColumnHeader countryCode;
-        private System.Windows.Forms.ColumnHeader district;
-        private System.Windows.Forms.ColumnHeader population;
         private System.Windows.Forms.ComboBox tableNamesComboBox;
         private System.Windows.Forms.Label tableNamesChoiceLabel;
     }

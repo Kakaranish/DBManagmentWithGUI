@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListView;
+using System.Linq.Expressions;
 
 namespace SQL_with_GUI
 {
@@ -18,11 +20,8 @@ namespace SQL_with_GUI
 
         MySqlConnection connection = new MySqlConnection();
         MySqlCommand command = null;
-
-        //Binding sources
-        BindingSource resultsBindingSource = new BindingSource();
+        
         BindingSource tableNamesBindingSource = new BindingSource();
-
         List<string> tableNames = null;
 
         //Constructor
@@ -92,25 +91,38 @@ namespace SQL_with_GUI
                 return false;
             }  
         }
+
+
+
         private void searchButton_Click(object sender, EventArgs e)
         {
             string queryTextBoxText = queryTextBox.Text;
-            List<string> queryWords = queryTextBoxText.Split(new Char[] { ' ' }).ToList();
+            List<string> queryWords = queryTextBoxText.Split(',').ToList();
 
             string query = "";
             /*
              * Get column names from table to list
-             */ 
+             */
+
             List<string> columnNames = new List<string>();
-            query = "show columns from city;";
+            string selectedTableName = (string)tableNamesComboBox.SelectedValue;
+            Console.WriteLine(selectedTableName);
+            query = String.Format($"show columns from {selectedTableName};");
 
             command = new MySqlCommand(query, connection);            
             MySqlDataReader dataReader = command.ExecuteReader();
             while (dataReader.Read())
                 columnNames.Add((string)dataReader["field"]);
 
-            query = "select * from city where ";
 
+
+            foreach (var item in resultsListView.Columns)
+                resultsListView.Columns.Remove((ColumnHeader)item);
+
+            foreach (var item in columnNames)
+                resultsListView.Columns.Add((string)item, resultsListView.Width / columnNames.Count);
+
+            query = String.Format($"select * from { selectedTableName } where ");
             int i = 0;
             foreach (string queryWord in queryWords)
             {
@@ -132,8 +144,6 @@ namespace SQL_with_GUI
             Console.WriteLine(query);
             dataReader = command.ExecuteReader();
             
-
-            
             ListViewItem listViewItem = null;
 
             resultsListView.Items.Clear();
@@ -152,6 +162,19 @@ namespace SQL_with_GUI
                 MessageBox.Show("No entries found in database", "Information");
 
             dataReader.Close();
+        }
+
+        private void DatabaseGUI_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void queryTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                searchButton_Click(sender, e);
+            }
         }
     }
 }
